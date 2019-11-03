@@ -1,6 +1,6 @@
 package sg.tcc;
 
-public class Usuario implements UsuarioDAO{
+public class Usuario implements UsuarioDAO {
 
     private int codigo;
     private String nome;
