@@ -1,6 +1,7 @@
 package sg.tcc;
+import java.io.Serializable;
 
-public class Usuario implements UsuarioDAO {
+public class Usuario implements Serializable {
 
     private int codigo;
     private String nome;
@@ -56,6 +57,7 @@ public class Usuario implements UsuarioDAO {
         this.nivelAcesso = nivelAcesso;
     }
 
+    /*
     @Override
     public void cadastrarUsuario(Object obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -75,5 +77,12 @@ public class Usuario implements UsuarioDAO {
     public void deletarUsuario(Object obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+*/
+    
+    public String toString() {
+        return ("Nome: " + nome + ". E-mail: " + email);
+    }
 
+    
+    
 }

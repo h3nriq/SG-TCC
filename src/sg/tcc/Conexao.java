@@ -27,7 +27,7 @@ public class Conexao {
             Statement st = conn.createStatement();
             // note that i'm leaving "date_created" out of this insert statement
             st.executeUpdate("INSERT INTO teste (nome, senha) "
-                    +"VALUES ('George Jetson', 'Futuro')");
+                    +"VALUES ('´loginentraaqui', 'senha')");
            System.out.println("Gravei na base teste com sucesso");
         } catch (SQLException ex) {
             System.out.println("Não consegui gravar");
