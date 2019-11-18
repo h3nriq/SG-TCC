@@ -3,26 +3,20 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
 
-    private int codigo;
     private String nome;
     private String email;
     private String senha;
     private int nivelAcesso;
 
-    public Usuario(int codigo, String nome, String email, String senha, int nivelAcesso){
-        this.codigo = codigo;
+    public Usuario(String nome, String email, String senha, int nivelAcesso){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.nivelAcesso = nivelAcesso;
     }
 
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public Usuario() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getNome() {
@@ -82,6 +76,7 @@ public class Usuario implements Serializable {
     public String toString() {
         return ("Nome: " + nome + ". E-mail: " + email);
     }
+
 
     
     
