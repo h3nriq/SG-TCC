@@ -20,7 +20,7 @@ public class NovaConexao {
         Connection conn = null;
         // CRIA CONEXAO
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://mysql10-farm76.kinghost.net:3306/jornalismodigi03", "jornalismodigi03", "appjava01");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jornalismodigi03", "jornalismodigi03", "appjava01");
         } catch (SQLException excecao) {
             System.out.println("Erro ao conectar" + excecao );
         }

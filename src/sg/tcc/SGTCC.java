@@ -1,5 +1,6 @@
 package sg.tcc;
 import gui.AlunoGUI;
+import gui.InicioGUI;
 import java.util.ArrayList;
 
 public class SGTCC {
@@ -16,7 +17,8 @@ public class SGTCC {
 //       Professor prof2 = new Professor("Alex Dias Gonsales", "alex.gonsales@poa.ifrs.edu.br", "123456", 1, "1780001");
 //       System.out.println(prof2.getNome());
 
-        new AlunoGUI().setVisible(true);
+        new InicioGUI().setVisible(true);
+       
 
     }  
 } 
