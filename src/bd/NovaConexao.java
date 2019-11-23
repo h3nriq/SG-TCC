@@ -8,7 +8,6 @@ package bd;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  *
@@ -20,9 +19,9 @@ public class NovaConexao {
         Connection conn = null;
         // CRIA CONEXAO
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jornalismodigi03", "jornalismodigi03", "appjava01");
+            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/tcc", "tcc", "tcc");
         } catch (SQLException excecao) {
-            System.out.println("Erro ao conectar" + excecao );
+            System.out.println("Erro ao conectar: " + excecao );
         }
         return conn;
     }

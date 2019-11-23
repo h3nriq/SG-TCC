@@ -11,7 +11,6 @@ import sg.tcc.Aluno;
  */
 public class AlunoDAO {
     private final Connection connection;
-    Long id;
     String nome;
     String nrMatricula;
     String email;
