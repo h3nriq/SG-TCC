@@ -34,7 +34,6 @@ ao qual o trabalho se relaciona. Esses três professores preenchem uma ficha de 
 fechamento da nota.
 
 **2.2 Trabalho de Conclusão de Curso:**
-
 Existem dois momentos de avaliação na disciplina de TC. O primeiro é o seminário de
 andamento, quando o aluno entrega um artigo contendo uma parcial do trabalho. Esse artigo
 é encaminhado para o orientador e mais dois professores de área a fim àquela do tema ao
@@ -45,7 +44,6 @@ Ao final do semestre é feita uma apresentação perante a mesma banca, a qual, 
 emitir parecer sobre a aprovação (ou não) do trabalho, e a respectiva nota do aluno. 
 
 **3. Requisitos Funcionais:**
-
 Para fins do projeto da disciplina de Linguagem de Programação II, do período de 2019/2, os
 requisitos estão relacionados apenas com o primeiro fluxo de trabalho (item 2.1)
 • CRUD de alunos (nome, número de matrícula, email e telefone de contato),
@@ -71,7 +69,6 @@ registrar no sistema o conceito (ou nota) atribuído para cada avaliador e o sis
 emitir o resultado final.
 
 **4. Outros Requisitos:**
-
 • Código encapsulado.
 • Código fonte documentado.
 • Persistência de dados em arquivos ou banco de dados que possa ser criado
