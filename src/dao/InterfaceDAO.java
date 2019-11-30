@@ -5,18 +5,21 @@
  */
 package dao;
 
+import java.util.List;
 /**
  *
  * @author paulo
  */
 public interface InterfaceDAO {
  
-    public boolean create(Object obj);
+    public void create(Object obj);
 
-    public boolean read(Object obj);
+    public Object read(int id);
 
-    public boolean update(Object obj);
+    public List<Object> readLista();
+            
+    public void update(Object obj);
 
-    public boolean delete(Object obj);
+    public void delete(int id);
 }
  
