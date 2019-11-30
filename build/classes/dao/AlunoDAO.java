@@ -2,6 +2,7 @@ package dao;
 import bd.NovaConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import sg.tcc.Aluno;
 
@@ -11,7 +12,6 @@ import sg.tcc.Aluno;
  */
 public class AlunoDAO {
     private final Connection connection;
-    Long id;
     String nome;
     String nrMatricula;
     String email;
@@ -23,7 +23,7 @@ public AlunoDAO(){
     }     
 
 public void create(Aluno aluno)  {
-        String sql = "INSERT INTO usuario (classe, nome, identificador, email, telefone, senha, nivelAcesso) VALUES('Aluno',?,?,?,?,?,0)";
+        String sql = "INSERT INTO usuario (tipo, nome, identificador, email, telefone, senha, nivelAcesso) VALUES('A',?,?,?,?,?,0)";
         try { 
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, aluno.getNome());
@@ -50,6 +50,26 @@ public boolean update(Aluno aluno) {
 public boolean delete(Aluno aluno) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }   
+
+public boolean loga(String email, String senha) {
+        boolean acessovalido = false;
+        String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+        try { 
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, senha);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                 acessovalido = true;
+             }
+            stmt.close();
+
+        } 
+        catch (SQLException u) { 
+            throw new RuntimeException(u);
+        }
+        return acessovalido;
+    }
 
 
 }
