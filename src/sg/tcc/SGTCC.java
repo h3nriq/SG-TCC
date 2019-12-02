@@ -18,13 +18,13 @@ public class SGTCC {
 
         // TESTES DE UPDATE, SELECT DE UM USER E DELETE
         //Aluno teste = new Aluno();
-        //teste = dao.read(18);
+        //teste = dao.read(12);
         //System.out.println(teste);
-        //teste.setNome("Diogo Almeira - versão 2");
+        //teste.setNome("Antonio Paulo Serpa");
         //System.out.println(teste);
         //dao.update(teste);      
 
-        //dao.delete(113);     
+        //dao.delete(18);     
 
     }  
 } 

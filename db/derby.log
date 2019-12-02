@@ -1,7 +1,7 @@
-Sat Nov 30 12:08:25 BRT 2019 : Apache Derby Servidor de Rede - 10.13.1.1 - (Unversioned directory) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Sun Dec 01 21:57:24 BRT 2019 : Apache Derby Servidor de Rede - 10.13.1.1 - (Unversioned directory) iniciado e pronto para aceitar conexões na porta 1527 em {3}
 ----------------------------------------------------------------
-Sat Nov 30 12:08:25 BRT 2019:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instância a816c00e-016e-bcdb-15b2-000010115c6e
+Sun Dec 01 21:57:29 BRT 2019:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instância a816c00e-016e-c41c-b050-000010115c6e
 no diretório de banco de dados C:\Dev\SG-TCC3\db\tcc 
 
 java.vendor=Oracle Corporation
@@ -12,3 +12,5 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Dev\SG-TCC3\db
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Sun Dec 01 22:07:18 BRT 2019: Shutting down Derby engine
