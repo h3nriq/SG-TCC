@@ -1,5 +1,5 @@
 package sg.tcc;
-import dao.AlunoDAO;
+import dao.ProfessorDAO;
 import gui.InicioGUI;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,24 +7,24 @@ import java.util.List;
 public class SGTCC {
     public static void main(String[] args) {
         
-        new InicioGUI().setVisible(true);
+        new InicioGUI().setVisible(true);;
 
-        AlunoDAO dao = new AlunoDAO();
+        ProfessorDAO dao = new ProfessorDAO();
         
-        List<Aluno> listaAlunos = dao.readLista();
-        for (Aluno aluno : listaAlunos) {
-          System.out.println("Id: " + aluno.getId() + ". Nome: " + aluno.getNome() + ". Nr. Matrícula: " + aluno.getNrMatricula() + ". E-mail: " + aluno.getEmail() + ". Telefone: " +aluno.getTelefone());
-        }
+//        List<Professor> listaProfessors = dao.readLista();
+//        for (Professor Professor : listaProfessors) {
+//          System.out.println("Id: " + Professor.getId() + ". Nome: " + Professor.getNome() + ". E-mail: " + Professor.getEmail());
+//        }
 
-        // TESTES DE UPDATE, SELECT DE UM USER E DELETE
-        //Aluno teste = new Aluno();
-        //teste = dao.read(12);
-        //System.out.println(teste);
-        //teste.setNome("Antonio Paulo Serpa");
-        //System.out.println(teste);
-        //dao.update(teste);      
+        // TESTES DE UPDATE, SELECT DE UM USER E DELETE;;;;;
+        Professor teste = new Professor();
+        teste = dao.read(20);
+        System.out.println(teste);
+        teste.setNome("Tanisi");
+        System.out.println(teste);
+        dao.update(teste);      
 
-        //dao.delete(18);     
+        //dao.delete(22);     
 
     }  
 } 
