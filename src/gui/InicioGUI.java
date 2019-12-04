@@ -63,7 +63,7 @@ public class InicioGUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Relatórios");
+        jMenu2.setText("Consulta");
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -84,7 +84,7 @@ public class InicioGUI extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        new AlunoGUI().setVisible(true);
+        new CreateAlunoGUI().setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

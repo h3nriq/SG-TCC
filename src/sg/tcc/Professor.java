@@ -1,14 +1,39 @@
 package sg.tcc;
-public class Professor extends Usuario{
+//extends Usuario
 
-    private String siape;
-    private int nrOrientacoes;
-    private int nrAvaliacoes;
-    
-    public Professor(String nome, String email, String senha, int nivelAcesso, String siape){
-        super(nome, email, senha, nivelAcesso);
-        this.siape = siape;
-        
+import java.io.Serializable;
+
+public class Professor implements Serializable {
+    private int id;
+    private String nome;
+    private String email;
+
+    public int getId() {
+        return id;
     }
-    
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Professor{" + "id=" + id + ", nome=" + nome + ", email=" + email +'}';
+    }
 }

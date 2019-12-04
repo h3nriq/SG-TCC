@@ -57,3 +57,5 @@ emitir o resultado final.
     2. Esse resultado final deve ser salvo para consultas?
 
 ---
+
+https://javaee.github.io/glassfish/download
