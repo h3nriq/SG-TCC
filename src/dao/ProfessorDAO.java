@@ -12,24 +12,24 @@ import sg.tcc.Professor;
  *
  * @author paulo
  */
-public class ProfessorDAO {
+public class ProfessorDAO implements InterfaceDAO {
     private final Connection connection;
     String id;
     String nome;
-    String nrMatricula;
     String email;
-    String telefone;
     
 public ProfessorDAO(){ 
         this.connection = new NovaConexao().getConexao();
     }     
 
-public void create(Professor Professor)  {
+    @Override
+    public void create(Object obj)  {
         String sql = "INSERT INTO usuario (tipo, nome, email ) VALUES('P',?,?)";
+        Professor professor = (Professor) obj;
         try { 
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, Professor.getNome());
-            stmt.setString(2, Professor.getEmail());
+            stmt.setString(1, professor.getNome());
+            stmt.setString(2, professor.getEmail());
             stmt.execute();
             stmt.close();
         } 
@@ -37,8 +37,9 @@ public void create(Professor Professor)  {
             throw new RuntimeException(u);
         }
     }
-
-public Professor read(int id) { 
+    
+     @Override
+    public Object read(int id) { 
         Professor Professor = null;
         String sql = "SELECT * FROM usuario WHERE id=?";
             try {
@@ -64,7 +65,47 @@ public Professor read(int id) {
         } 
 }
 
-public List<Professor> readLista() {
+    @Override
+    public void update(Object obj) {
+        String sql = "UPDATE usuario SET nome=?, email=?  WHERE id=?";
+        Professor professor = (Professor) obj;
+        try { 
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, professor.getNome());
+            stmt.setString(2, professor.getEmail());
+            stmt.setInt(3, professor.getId());
+
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Objeto Professor atualizado com sucesso!");
+            }
+                stmt.execute();
+                stmt.close();
+        } 
+        catch (SQLException u) { 
+            throw new RuntimeException(u);
+        }
+}
+
+    @Override
+    public void delete(int id) {
+        String sql = "DELETE FROM usuario WHERE ID=?";
+        try { 
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            
+            int rowsDeleted = stmt.executeUpdate();
+
+            stmt.execute();
+            stmt.close();
+
+        } 
+        catch (SQLException u) { 
+            throw new RuntimeException(u);
+        }
+    }   
+
+    public List<Professor> readLista() {
              try {
                  List<Professor> listaProfessors = new ArrayList<>();
                  PreparedStatement stmt = this.connection.prepareStatement("select * from usuario where tipo = 'P'");
@@ -87,44 +128,5 @@ public List<Professor> readLista() {
                  throw new RuntimeException(e);
              }
          }
-
-public void update(Professor professor) {
-        String sql = "UPDATE usuario SET nome=?, email=?  WHERE id=?";
-        try { 
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, professor.getNome());
-            stmt.setString(2, professor.getEmail());
-            stmt.setInt(3, professor.getId());
-
-            int rowsUpdated = stmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Objeto Professor atualizado com sucesso!");
-            }
-                stmt.execute();
-                stmt.close();
-        } 
-        catch (SQLException u) { 
-            throw new RuntimeException(u);
-        }
-}
-
-public void delete(int id) {
-        String sql = "DELETE FROM usuario WHERE ID=?";
-        try { 
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, id);
-            
-            int rowsDeleted = stmt.executeUpdate();
-
-            stmt.execute();
-            stmt.close();
-
-        } 
-        catch (SQLException u) { 
-            throw new RuntimeException(u);
-        }
-    }   
-
-
 
 }

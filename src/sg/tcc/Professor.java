@@ -3,37 +3,16 @@ package sg.tcc;
 
 import java.io.Serializable;
 
-public class Professor implements Serializable {
-    private int id;
-    private String nome;
-    private String email;
+public class Professor extends Usuario implements Serializable {
 
-    public int getId() {
-        return id;
+    public Professor(int id, String nome, String email){
+        super(id, nome, email);
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public Professor(){ }
 
     @Override
     public String toString() {
-        return "Professor{" + "id=" + id + ", nome=" + nome + ", email=" + email +'}';
+        return "Professor{" + "id=" + getId() + ", nome=" + getNome() + ", email=" + getEmail() +'}';
     }
 }

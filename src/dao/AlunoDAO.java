@@ -8,11 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import sg.tcc.Aluno;
 
-/**
- *
- * @author paulo
- */
-public class AlunoDAO {
+public class AlunoDAO implements InterfaceDAO {
     private final Connection connection;
     String id;
     String nome;
@@ -24,8 +20,11 @@ public AlunoDAO(){
         this.connection = new NovaConexao().getConexao();
     }     
 
-public void create(Aluno aluno)  {
+
+    @Override
+    public void create(Object obj) {
         String sql = "INSERT INTO usuario (tipo, nome, identificador, email, telefone) VALUES('A',?,?,?,?)";
+        Aluno aluno = (Aluno) obj;
         try { 
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, aluno.getNome());
@@ -40,7 +39,8 @@ public void create(Aluno aluno)  {
         }
     }
 
-public Aluno read(int id) { 
+    @Override
+    public Object read(int id) { 
         Aluno aluno = null;
         String sql = "SELECT * FROM usuario WHERE id=?";
             try {
@@ -68,7 +68,49 @@ public Aluno read(int id) {
         } 
 }
 
-public List<Aluno> readLista() {
+    @Override
+    public void update(Object obj) {
+        Aluno aluno = (Aluno) obj;
+        String sql = "UPDATE usuario SET nome=?, identificador=?, email=?, telefone=? WHERE id=?";
+        try { 
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, aluno.getNome());
+            stmt.setString(2, aluno.getNrMatricula());
+            stmt.setString(3, aluno.getEmail());
+            stmt.setString(4, aluno.getTelefone());
+            stmt.setInt(5, aluno.getId());
+
+            int rowsUpdated = stmt.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Objeto Aluno atualizado com sucesso!");
+            }
+                stmt.execute();
+                stmt.close();
+        } 
+        catch (SQLException u) { 
+            throw new RuntimeException(u);
+        }
+}
+
+    @Override
+    public void delete(int id) {
+        String sql = "DELETE FROM usuario WHERE ID=?";
+        try { 
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            
+            int rowsDeleted = stmt.executeUpdate();
+
+            stmt.execute();
+            stmt.close();
+
+        } 
+        catch (SQLException u) { 
+            throw new RuntimeException(u);
+        }
+    }   
+
+    public List<Aluno> readLista() {
              try {
                  List<Aluno> listaAlunos = new ArrayList<>();
                  PreparedStatement stmt = this.connection.prepareStatement("select * from usuario where tipo = 'A'");
@@ -93,46 +135,5 @@ public List<Aluno> readLista() {
                  throw new RuntimeException(e);
              }
          }
-
-public void update(Aluno aluno) {
-        String sql = "UPDATE usuario SET nome=?, identificador=?, email=?, telefone=? WHERE id=?";
-        try { 
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, aluno.getNome());
-            stmt.setString(2, aluno.getNrMatricula());
-            stmt.setString(3, aluno.getEmail());
-            stmt.setString(4, aluno.getTelefone());
-            stmt.setInt(5, aluno.getId());
-
-            int rowsUpdated = stmt.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Objeto Aluno atualizado com sucesso!");
-            }
-                stmt.execute();
-                stmt.close();
-        } 
-        catch (SQLException u) { 
-            throw new RuntimeException(u);
-        }
-}
-
-public void delete(int id) {
-        String sql = "DELETE FROM usuario WHERE ID=?";
-        try { 
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, id);
-            
-            int rowsDeleted = stmt.executeUpdate();
-
-            stmt.execute();
-            stmt.close();
-
-        } 
-        catch (SQLException u) { 
-            throw new RuntimeException(u);
-        }
-    }   
-
-
 
 }
