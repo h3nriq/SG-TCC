@@ -41,7 +41,7 @@ public ProfessorDAO(){
      @Override
     public Object read(int id) { 
         Professor Professor = null;
-        String sql = "SELECT * FROM usuario WHERE id=?";
+        String sql = "SELECT * FROM usuario WHERE id=? ORDER BY id ASC";
             try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id); // Set 1st WHERE to int
@@ -107,23 +107,22 @@ public ProfessorDAO(){
 
     public List<Professor> readLista() {
              try {
-                 List<Professor> listaProfessors = new ArrayList<>();
+                 List<Professor> listaProfessores = new ArrayList<>();
                  PreparedStatement stmt = this.connection.prepareStatement("select * from usuario where tipo = 'P'");
                  ResultSet rs = stmt.executeQuery();
                  
                  while (rs.next()) {
-                     // criando o objeto Contato
-                     Professor Professor = new Professor();
-                     Professor.setId(rs.getInt("id"));
-                     Professor.setNome(rs.getString("nome"));
-                     Professor.setEmail(rs.getString("email"));
-                     
+                     // cria os objetos para receber os dados do BD
+                     Professor professor = new Professor();
+                     professor.setId(rs.getInt("id"));
+                     professor.setNome(rs.getString("nome"));
+                     professor.setEmail(rs.getString("email"));
                      // adicionando o objeto à lista
-                     listaProfessors.add(Professor);
+                     listaProfessores.add(professor);
                  }
                  rs.close();
                  stmt.close();
-                 return listaProfessors;
+                 return listaProfessores;
              } catch (SQLException e) {
                  throw new RuntimeException(e);
              }

@@ -6,31 +6,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import sg.tcc.Aluno;
+import sg.tcc.Areas;
 
-public class AlunoDAO implements InterfaceDAO {
+public class AreasDAO implements InterfaceDAO {
     private final Connection connection;
-    String id;
-    String nome;
-    String nrMatricula;
-    String email;
-    String telefone;
+    private int codArea;
+    private String nomeArea;
     
-public AlunoDAO(){ 
+public AreasDAO(){ 
         this.connection = new NovaConexao().getConexao();
-    }     
-
+    }
 
     @Override
     public void create(Object obj) {
-        String sql = "INSERT INTO usuario (tipo, nome, identificador, email, telefone) VALUES('A',?,?,?,?)";
-        Aluno aluno = (Aluno) obj;
+        String sql = "INSERT INTO area_interesse (area_interesse) VALUES(?)";
+        Areas area = (Areas) obj;
         try { 
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, aluno.getNome());
-            stmt.setString(2, aluno.getNrMatricula());
-            stmt.setString(3, aluno.getEmail());
-            stmt.setString(4, aluno.getTelefone());
+            stmt.setString(1, area.getNomeArea());
             stmt.execute();
             stmt.close();
         } 
@@ -39,28 +32,25 @@ public AlunoDAO(){
         }
     }
 
+
     @Override
     public Object read(int id) { 
-        Aluno aluno = null;
-        String sql = "SELECT * FROM usuario WHERE id=? ORDER BY id ASC";
+        Areas area = null;
+        String sql = "SELECT * FROM area_interesse WHERE id=? ORDER BY id ASC";
             try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, id); // Set 1st WHERE to int
- 
+            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
  
             if (rs.next()) {
-                    aluno = new Aluno();
-                    aluno.setId(rs.getInt("id"));
-                    aluno.setNome(rs.getString("nome"));
-                    aluno.setNrMatricula(rs.getString("identificador"));
-                    aluno.setEmail(rs.getString("email"));
-                    aluno.setTelefone(rs.getString("telefone"));
+                    area = new Areas();
+                    area.setCodArea(rs.getInt("id"));
+                    area.setNomeArea(rs.getString("area_interesse"));
             }
  
             rs.close();
             stmt.close();
-            return aluno;
+            return area;
 
         } catch (SQLException e) {
             //e.printStackTrace();
@@ -70,15 +60,12 @@ public AlunoDAO(){
 
     @Override
     public void update(Object obj) {
-        Aluno aluno = (Aluno) obj;
-        String sql = "UPDATE usuario SET nome=?, identificador=?, email=?, telefone=? WHERE id=?";
+        Areas area = (Areas) obj;
+        String sql = "UPDATE area_interesse SET area_interesse=? WHERE id=?";
         try { 
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, aluno.getNome());
-            stmt.setString(2, aluno.getNrMatricula());
-            stmt.setString(3, aluno.getEmail());
-            stmt.setString(4, aluno.getTelefone());
-            stmt.setInt(5, aluno.getId());
+            stmt.setString(1, area.getNomeArea());
+            stmt.setInt(2, area.getCodArea());
 
             int rowsUpdated = stmt.executeUpdate();
             if (rowsUpdated > 0) {
@@ -94,7 +81,7 @@ public AlunoDAO(){
 
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM usuario WHERE ID=?";
+        String sql = "DELETE FROM area_interesse WHERE ID=?";
         try { 
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);
@@ -110,27 +97,23 @@ public AlunoDAO(){
         }
     }   
 
-    public List<Aluno> readLista() {
+    public List<Areas> readLista() {
              try {
-                 List<Aluno> listaAlunos = new ArrayList<>();
-                 PreparedStatement stmt = this.connection.prepareStatement("select * from usuario where tipo = 'A'");
+                 List<Areas> listaAreas = new ArrayList<>();
+                 PreparedStatement stmt = this.connection.prepareStatement("select * from area_interesse");
                  ResultSet rs = stmt.executeQuery();
                  
                  while (rs.next()) {
-                     // criando o objeto Contato
-                     Aluno aluno = new Aluno();
-                     aluno.setId(rs.getInt("id"));
-                     aluno.setNome(rs.getString("nome"));
-                     aluno.setNrMatricula(rs.getString("identificador"));
-                     aluno.setEmail(rs.getString("email"));
-                     aluno.setTelefone(rs.getString("telefone"));
-                     
+                     // cria os objetos para receber os dados do BD
+                     Areas area = new Areas();
+                     area.setCodArea(rs.getInt("id"));
+                     area.setNomeArea(rs.getString("area_interesse"));
                      // adicionando o objeto à lista
-                     listaAlunos.add(aluno);
+                     listaAreas.add(area);
                  }
                  rs.close();
                  stmt.close();
-                 return listaAlunos;
+                 return listaAreas;
              } catch (SQLException e) {
                  throw new RuntimeException(e);
              }
