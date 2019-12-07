@@ -46,7 +46,7 @@ public class SGTCC {
         }
 
         // TESTES DE UPDATE, SELECT DE UM USER E DELETE
-        Professor teste2 = (Professor) dao2.read(213);
+        Professor teste2 = (Professor) dao2.read(1);
         //System.out.println(teste2);
         //teste2.setNome("Alex Dias Gonsales");
         //teste2.setEmail("alex.gonsales@poa.ifrs.edu.br");
@@ -62,7 +62,7 @@ public class SGTCC {
         }
 
         // TESTES DE UPDATE, SELECT DE UM USER, DELETE E CREATE
-        Areas teste3 = (Areas)dao3.read(204);
+        Areas teste3 = (Areas)dao3.read(104);
         // System.out.println(teste3);
         // teste3.setNomeArea("Redes de Computadores");
         // System.out.println(teste3);
@@ -76,10 +76,10 @@ public class SGTCC {
         
         
         Professor_AreasDAO dao4 = new Professor_AreasDAO();
-        //Professor_Areas testearea1;
-        //testearea1 = new Professor_Areas(teste3, teste2);
-        //System.out.println(testearea1);
-        //dao4.create(testearea1);
+        Professor_Areas professor_areas;
+        professor_areas = new Professor_Areas(teste3, teste2);
+        System.out.println(professor_areas);
+        dao4.create(professor_areas);
         //dao4.delete(11, 105);
 
         System.out.println("\nLISTA AREAS DE INTERESSE E PROFESSORES");

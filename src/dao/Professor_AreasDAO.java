@@ -10,7 +10,7 @@ import sg.tcc.Areas;
 import sg.tcc.Professor_Areas;
 import sg.tcc.Professor;
 
-public class Professor_AreasDAO implements InterfaceDAO {
+public class Professor_AreasDAO  {
     private final Connection connection;
     Areas area;
     Professor professor;
@@ -20,11 +20,11 @@ public Professor_AreasDAO(){
         this.connection = new NovaConexao().getConexao();
     }
 
-    @Override
-    public void create(Object obj) {
+
+    public void create(Professor_Areas professor_areas) {
         String sql = "INSERT INTO professor_areainteresse (id_professor, id_areainteresse) VALUES(?, ?)";
         // para gravar na base desmembramos o objeto AreasdeInteresse para recuperar o id da area e do professor
-        Professor_Areas areaprof = (Professor_Areas) obj;
+        Professor_Areas areaprof = professor_areas;
         Areas pegaArea = areaprof.getArea();
         int pegaIdArea = pegaArea.getCodArea();
         Professor pegaProfessor = areaprof.getProfessor();
@@ -41,25 +41,6 @@ public Professor_AreasDAO(){
             throw new RuntimeException(u);
         }
     }
-
-    @Override
-    public Object read(int id) {
-        System.out.println("Não é possível dar read.");     
-        return null;
-    }
-    
-
-    @Override
-    public void update(Object obj) {
-        System.out.println("Não é possível dar update.");
-        }
-
-    
-    @Override
-    public void delete(int id) {
-        System.out.println("Função inutilizada.");
-    }   
-
     
     public void delete(int id_prof, int id_area) {
         String sql = "DELETE FROM professor_areainteresse WHERE id_professor=? AND id_areainteresse=?";
