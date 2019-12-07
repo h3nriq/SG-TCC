@@ -108,7 +108,7 @@ public ProfessorDAO(){
     public List<Professor> readLista() {
              try {
                  List<Professor> listaProfessores = new ArrayList<>();
-                 PreparedStatement stmt = this.connection.prepareStatement("select * from usuario where tipo = 'P'");
+                 PreparedStatement stmt = this.connection.prepareStatement("select * from usuario where tipo = 'P' ORDER BY id ASC");
                  ResultSet rs = stmt.executeQuery();
                  
                  while (rs.next()) {

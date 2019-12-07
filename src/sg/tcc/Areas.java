@@ -1,13 +1,15 @@
 package sg.tcc;
 
-public class Areas {
+import java.io.Serializable;
+
+public class Areas implements Serializable {
 	private int codArea;
 	private String nomeArea;
 
         public Areas(int codArea, String nomeArea) {
         this.codArea = codArea;
         this.nomeArea = nomeArea;
-    }
+        }
 
         public Areas() { }
         
