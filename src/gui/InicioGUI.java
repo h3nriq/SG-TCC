@@ -42,6 +42,7 @@ public class InicioGUI extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SG-TCC - Sistema de Grenciamento de Trabalho de Concluão de Cursos");
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
@@ -137,7 +138,8 @@ public class InicioGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(785, 555));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -147,6 +149,7 @@ public class InicioGUI extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
+        new CriaProfessor().setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem5ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuItem5ComponentAdded

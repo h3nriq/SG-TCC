@@ -70,6 +70,7 @@ public class CreateAlunoGUI extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -210,9 +211,10 @@ public class CreateAlunoGUI extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastro de Aluno");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Cadastro de Usuário");
+        jLabel1.setText("Cadastro de Aluno");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastrar novo aluno"));
 
@@ -275,7 +277,7 @@ public class CreateAlunoGUI extends javax.swing.JFrame {
                             .addComponent(jTextField4)
                             .addComponent(jTextField3)
                             .addComponent(jTextField2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -305,6 +307,13 @@ public class CreateAlunoGUI extends javax.swing.JFrame {
                     .addComponent(jButton2)))
         );
 
+        jToggleButton1.setText("Sair");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -317,7 +326,10 @@ public class CreateAlunoGUI extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jToggleButton1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -327,10 +339,15 @@ public class CreateAlunoGUI extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jToggleButton1)
+                .addContainerGap())
         );
 
+        jToggleButton1.getAccessibleContext().setAccessibleName("Sair");
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -351,14 +368,14 @@ public class CreateAlunoGUI extends javax.swing.JFrame {
 
         // fazendo a validação dos dados
         if ((jTextField1.getText().isEmpty()) || (jTextField2.getText().isEmpty()) || (jTextField3.getText().isEmpty()) || (jTextField4.getText().isEmpty()) || (jTextField4.getText().isEmpty())) {
-            JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+            JOptionPane.showMessageDialog(null, "Preencher todos os campos!");
         }
         else {
 
             // instanciando a classe UsuarioDAO do pacote dao e criando seu objeto dao
             AlunoDAO dao = new AlunoDAO();
             dao.create(usuarios);
-            JOptionPane.showMessageDialog(null, "Usuário "+jTextField1.getText()+" inserido com sucesso! ");
+            JOptionPane.showMessageDialog(null, "Aluno "+jTextField1.getText()+" inserido com sucesso! ");
         }
 
         // apaga os dados preenchidos nos campos de texto
@@ -393,6 +410,11 @@ public class CreateAlunoGUI extends javax.swing.JFrame {
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        System.exit (0);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -470,5 +492,6 @@ public class CreateAlunoGUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
