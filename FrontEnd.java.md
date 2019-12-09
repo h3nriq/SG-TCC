@@ -5,3 +5,7 @@ Nome da Tela:
 Title - titulo na barra superior
 Botões de Maximizar
 
+Criar frames container:
+    - Incluir um Painel de Area de Trabalho
+    - Criar um Formulario JinternalFrame (Novo/Fomulario JinTernalFrame)
+
