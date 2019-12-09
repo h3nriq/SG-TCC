@@ -43,7 +43,6 @@ public class InicioGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SG-TCC - Sistema de Grenciamento de Trabalho de Concluão de Cursos");
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -84,7 +83,12 @@ public class InicioGUI extends javax.swing.JFrame {
         jMenuItem3.setText("Banca Avaliadora");
         jMenu1.add(jMenuItem3);
 
-        jMenuItem4.setText("Proposta");
+        jMenuItem4.setText("Projeto");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem4);
 
         jMenuItem5.setText("Professor");
@@ -143,6 +147,14 @@ public class InicioGUI extends javax.swing.JFrame {
     private void jMenuItem5ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuItem5ComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ComponentAdded
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        jifCadastroProjeto obj  = new jifCadastroProjeto();
+        jdpPrincipal.add(obj);
+        obj.setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments

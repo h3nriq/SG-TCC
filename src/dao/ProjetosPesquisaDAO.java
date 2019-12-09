@@ -6,30 +6,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import sg.tcc.Professor;
+import sg.tcc.ProjetosPesquisa;
 
-/**
- *
- * @author paulo
- */
-public class ProfessorDAO implements InterfaceDAO {
+public class ProjetosPesquisaDAO implements InterfaceDAO {
     private final Connection connection;
     String id;
     String nome;
     String email;
     
-public ProfessorDAO(){ 
+public ProjetosPesquisaDAO(){ 
         this.connection = new NovaConexao().getConexao();
     }     
 
     @Override
     public void create(Object obj)  {
-        String sql = "INSERT INTO usuario (tipo, nome, email ) VALUES('P',?,?)";
-        Professor professor = (Professor) obj;
+        String sql = "INSERT INTO projeto (nome_projeto, descricao) VALUES(?,?)";
+        ProjetosPesquisa projeto = (ProjetosPesquisa) obj;
         try { 
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, professor.getNome());
-            stmt.setString(2, professor.getEmail());
+            stmt.setString(1, projeto.getNomeProjeto());
+            stmt.setString(2, projeto.getDescricao());
             stmt.execute();
             stmt.close();
         } 
@@ -40,8 +36,8 @@ public ProfessorDAO(){
     
      @Override
     public Object read(int id) { 
-        Professor professor = null;
-        String sql = "SELECT * FROM usuario WHERE id=? ORDER BY id ASC";
+        ProjetosPesquisa projeto = null;
+        String sql = "SELECT * FROM projeto WHERE id=? ORDER BY id ASC";
             try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id); // Set 1st WHERE to int
@@ -49,15 +45,15 @@ public ProfessorDAO(){
             ResultSet rs = stmt.executeQuery();
  
             if (rs.next()) {
-                    professor = new Professor();
-                    professor.setId(rs.getInt("id"));
-                    professor.setNome(rs.getString("nome"));
-                    professor.setEmail(rs.getString("email"));
+                    projeto = new ProjetosPesquisa();
+                    projeto.setId(rs.getInt("id"));
+                    projeto.setNomeProjeto(rs.getString("nome_projeto"));
+                    projeto.setDescricao(rs.getString("descricao"));
             }
  
             rs.close();
             stmt.close();
-            return professor;
+            return projeto;
 
         } catch (SQLException e) {
             //e.printStackTrace();
@@ -67,13 +63,13 @@ public ProfessorDAO(){
 
     @Override
     public void update(Object obj) {
-        String sql = "UPDATE usuario SET nome=?, email=?  WHERE id=?";
-        Professor professor = (Professor) obj;
+        String sql = "UPDATE projeto SET nome_projeto=?, descricao=?  WHERE id=?";
+        ProjetosPesquisa projeto = (ProjetosPesquisa) obj;
         try { 
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, professor.getNome());
-            stmt.setString(2, professor.getEmail());
-            stmt.setInt(3, professor.getId());
+            stmt.setString(1, projeto.getNomeProjeto());
+            stmt.setString(2, projeto.getDescricao());
+            stmt.setInt(3, projeto.getId());
 
             int rowsUpdated = stmt.executeUpdate();
             if (rowsUpdated > 0) {
@@ -89,7 +85,7 @@ public ProfessorDAO(){
 
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM usuario WHERE ID=?";
+        String sql = "DELETE FROM projeto WHERE ID=?";
         try { 
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);
@@ -105,24 +101,24 @@ public ProfessorDAO(){
         }
     }   
 
-    public List<Professor> readLista() {
+    public List<ProjetosPesquisa> readLista() {
              try {
-                 List<Professor> listaProfessores = new ArrayList<>();
-                 PreparedStatement stmt = this.connection.prepareStatement("select * from usuario where tipo = 'P' ORDER BY id ASC");
+                 List<ProjetosPesquisa> listaProjetos = new ArrayList<>();
+                 PreparedStatement stmt = this.connection.prepareStatement("select * from projeto");
                  ResultSet rs = stmt.executeQuery();
                  
                  while (rs.next()) {
                      // cria os objetos para receber os dados do BD
-                     Professor professor = new Professor();
-                     professor.setId(rs.getInt("id"));
-                     professor.setNome(rs.getString("nome"));
-                     professor.setEmail(rs.getString("email"));
+                     ProjetosPesquisa projeto = new ProjetosPesquisa();
+                     projeto.setId(rs.getInt("id"));
+                     projeto.setNomeProjeto(rs.getString("nome_projeto"));
+                     projeto.setDescricao(rs.getString("descricao"));
                      // adicionando o objeto à lista
-                     listaProfessores.add(professor);
+                     listaProjetos.add(projeto);
                  }
                  rs.close();
                  stmt.close();
-                 return listaProfessores;
+                 return listaProjetos;
              } catch (SQLException e) {
                  throw new RuntimeException(e);
              }
