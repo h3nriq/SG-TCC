@@ -15,8 +15,6 @@ public interface InterfaceDAO {
     public void create(Object obj);
 
     public Object read(int id);
-
-    public List<Object> readLista();
             
     public void update(Object obj);
 

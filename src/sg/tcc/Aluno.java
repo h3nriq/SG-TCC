@@ -3,46 +3,18 @@ package sg.tcc;
 
 import java.io.Serializable;
 
-public class Aluno implements Serializable {
-    private int id;
-    private String nome;
-    private String email;
+public class Aluno extends Usuario implements Serializable {
     private String nrMatricula;
     private String telefone;
 
-    /* 
-        NOTA PARA O PROFESSOR. OPTAMOS POR DEIXAR O CONSTRUTOR VAZIO E PREENCHER O OBJETO ATRAVÉS DE SETTERS
-    public Aluno(String nome, String email, String senha, int nivelAcesso, String nrMatricula, String telefone){
-        super(nome, email, senha, nivelAcesso);
+    public Aluno(int id, String nome, String email, String nrMatricula, String telefone){
+        super(id, nome, email);
         this.nrMatricula = nrMatricula;
         this.telefone = telefone;
     }
-    }
-*/
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public Aluno(){ }    
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
     public String getNrMatricula() {
         return nrMatricula;
     }
@@ -61,6 +33,6 @@ public class Aluno implements Serializable {
 
     @Override
     public String toString() {
-        return "Aluno{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", nrMatricula=" + nrMatricula + ", telefone=" + telefone + '}';
+        return "Aluno{" + "id=" + getId() + ", nome=" + getNome() + ", email=" + getEmail() + ", nrMatricula=" + nrMatricula + ", telefone=" + telefone + '}';
     }
 }
