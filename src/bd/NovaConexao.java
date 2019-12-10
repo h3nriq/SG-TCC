@@ -17,13 +17,32 @@ public class NovaConexao {
 
     public Connection getConexao() {
         Connection conn = null;
+        
+        
         // CRIA CONEXAO
-        try {
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/tcc", "tcc", "tcc");
-        } catch (SQLException excecao) {
-            System.out.println("Erro ao conectar: " + excecao );
+//        try {
+//           conn = DriverManager.getConnection("jdbc:derby://localhost:1527/tcc", "tcc", "tcc");
+//        } catch (SQLException excecao) {
+//           System.out.println("Erro ao conectar: " + excecao );
+        
+           
+           //CONEXAO EM TEMPO DE EXECUçÃO
+        try{
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            conn = DriverManager.getConnection("jdbc:derby:tcc", "tcc", "tcc");
+            
+            System.out.println("Conectado!");
+            
+        }catch(ClassNotFoundException e){
+            System.out.println("Não encontrado o driver: " + e.getMessage());
+                    
+        } catch(SQLException e) {
+            System.out.println("Não foi possivel comunicar: " + e.getMessage());
         }
+        
         return conn;
+        
+        
     }
 
 }

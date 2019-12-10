@@ -40,7 +40,7 @@ public ProfessorDAO(){
     
      @Override
     public Object read(int id) { 
-        Professor Professor = null;
+        Professor professor = null;
         String sql = "SELECT * FROM usuario WHERE id=? ORDER BY id ASC";
             try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -49,15 +49,15 @@ public ProfessorDAO(){
             ResultSet rs = stmt.executeQuery();
  
             if (rs.next()) {
-                    Professor = new Professor();
-                    Professor.setId(rs.getInt("id"));
-                    Professor.setNome(rs.getString("nome"));
-                    Professor.setEmail(rs.getString("email"));
+                    professor = new Professor();
+                    professor.setId(rs.getInt("id"));
+                    professor.setNome(rs.getString("nome"));
+                    professor.setEmail(rs.getString("email"));
             }
  
             rs.close();
             stmt.close();
-            return Professor;
+            return professor;
 
         } catch (SQLException e) {
             //e.printStackTrace();

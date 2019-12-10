@@ -3,6 +3,7 @@ import dao.AlunoDAO;
 import dao.AreasDAO;
 import dao.Professor_AreasDAO;
 import dao.ProfessorDAO;
+import dao.ProjetosPesquisaDAO;
 import gui.InicioGUI;
 import java.util.List;
 
@@ -76,17 +77,26 @@ public class SGTCC {
         
         
         Professor_AreasDAO dao4 = new Professor_AreasDAO();
-        Professor_Areas professor_areas;
-        professor_areas = new Professor_Areas(teste3, teste2);
-        System.out.println(professor_areas);
-        dao4.create(professor_areas);
+        //Professor_Areas professor_areas;
+        //professor_areas = new Professor_Areas(teste3, teste2);
+        //System.out.println(professor_areas);
+        //dao4.create(professor_areas);
         //dao4.delete(11, 105);
-
         System.out.println("\nLISTA AREAS DE INTERESSE E PROFESSORES");
         List<Professor_Areas> listaProfessor_Areas = dao4.readLista('p', 1);
         for (Professor_Areas profarea : listaProfessor_Areas) {
             System.out.println(profarea);
         }
+
+        ProjetosPesquisaDAO dao5 = new ProjetosPesquisaDAO();
+        System.out.println("\nLISTA PROJETOS DE PESQUISA");
+        List<ProjetosPesquisa> listaProjetosPesquisa = dao5.readLista();
+        for (ProjetosPesquisa projeto : listaProjetosPesquisa) {
+            System.out.println(projeto);
+        }
+        //dao5.delete(3);
+
+
         
     }  
 } 
