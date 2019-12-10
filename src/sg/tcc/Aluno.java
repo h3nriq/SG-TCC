@@ -2,6 +2,7 @@ package sg.tcc;
 //extends Usuario
 
 import java.io.Serializable;
+import java.util.Vector;
 
 public class Aluno extends Usuario implements Serializable {
     private String nrMatricula;
@@ -35,4 +36,5 @@ public class Aluno extends Usuario implements Serializable {
     public String toString() {
         return "Aluno{" + "id=" + getId() + ", nome=" + getNome() + ", email=" + getEmail() + ", nrMatricula=" + nrMatricula + ", telefone=" + telefone + '}';
     }
+
 }

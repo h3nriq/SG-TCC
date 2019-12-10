@@ -4,6 +4,7 @@ import dao.AreasDAO;
 import dao.Professor_AreasDAO;
 import dao.ProfessorDAO;
 import dao.ProjetosPesquisaDAO;
+import dao.TemasSugeridosDAO;
 import gui.InicioGUI;
 import java.util.List;
 
@@ -94,7 +95,20 @@ public class SGTCC {
         for (ProjetosPesquisa projeto : listaProjetosPesquisa) {
             System.out.println(projeto);
         }
-        //dao5.delete(3);
+        ProjetosPesquisa teste5 = (ProjetosPesquisa) dao5.read(101);
+        //System.out.println(teste5);
+        //teste5.setDescricao("Objetiva fazer uso da computação tanto como ferramenta para estimular os processos cognitivos, como ferramenta de produção de conhecimento e novos recursos educacionais.");
+        //System.out.println(teste5);
+        //dao5.update(teste5);      
+
+
+        TemasSugeridosDAO dao6 = new TemasSugeridosDAO();
+        System.out.println("\nLISTA TEMAS");
+        List<TemasSugeridos> listaTemas = dao6.readLista();
+        for (TemasSugeridos tema : listaTemas) {
+            System.out.println(tema);
+        }
+        //dao6.delete(2);
 
 
         
