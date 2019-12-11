@@ -49,7 +49,6 @@ public class SGTCC {
 
         // TESTES DE UPDATE, SELECT DE UM USER E DELETE
         Professor teste2 = (Professor) dao2.read(1);
-        //System.out.println(teste2);
         //teste2.setNome("Alex Dias Gonsales");
         //teste2.setEmail("alex.gonsales@poa.ifrs.edu.br");
         //System.out.println(teste2);
@@ -82,12 +81,12 @@ public class SGTCC {
         //professor_areas = new Professor_Areas(teste3, teste2);
         //System.out.println(professor_areas);
         //dao4.create(professor_areas);
-        //dao4.delete(11, 105);
         System.out.println("\nLISTA AREAS DE INTERESSE E PROFESSORES");
         List<Professor_Areas> listaProfessor_Areas = dao4.readLista('p', 1);
         for (Professor_Areas profarea : listaProfessor_Areas) {
             System.out.println(profarea);
         }
+        //dao4.delete(1, 104);
 
         ProjetosPesquisaDAO dao5 = new ProjetosPesquisaDAO();
         System.out.println("\nLISTA PROJETOS DE PESQUISA");
@@ -95,12 +94,11 @@ public class SGTCC {
         for (ProjetosPesquisa projeto : listaProjetosPesquisa) {
             System.out.println(projeto);
         }
-        ProjetosPesquisa teste5 = (ProjetosPesquisa) dao5.read(101);
+        //ProjetosPesquisa teste5 = (ProjetosPesquisa) dao5.read(101);
         //System.out.println(teste5);
         //teste5.setDescricao("Objetiva fazer uso da computação tanto como ferramenta para estimular os processos cognitivos, como ferramenta de produção de conhecimento e novos recursos educacionais.");
         //System.out.println(teste5);
         //dao5.update(teste5);      
-
 
         TemasSugeridosDAO dao6 = new TemasSugeridosDAO();
         System.out.println("\nLISTA TEMAS");
@@ -109,7 +107,18 @@ public class SGTCC {
             System.out.println(tema);
         }
         //dao6.delete(2);
+  
+        //Professor teste7 = (Professor) dao2.read(9);
+        //System.out.println(teste7);
 
+        //TemasSugeridos teste6 = (TemasSugeridos)dao6.read(1);
+        //teste6.setReservado(false);
+        // System.out.println(teste3);
+        // dao3.delete(4);     
+        //System.out.println(teste6);        
+        //dao6.update(teste6);      
+        
+        
 
         
     }  

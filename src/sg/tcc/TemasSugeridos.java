@@ -59,7 +59,7 @@ public class TemasSugeridos {
 
     @Override
     public String toString() {
-        return "TemasSugeridos{" + "codTema=" + codTema + ", nomeTema=" + nomeTema + ", reservado=" + reservado + ", professor=" + professor + ", projetospesquisa=" + projetospesquisa + '}';
+        return "TemasSugeridos{" + "codTema=" + codTema + ", nomeTema=" + nomeTema + ", reservado=" + reservado + ", professor=" + professor.getId() + ", projetospesquisa=" + projetospesquisa.getId() + '}';
     }
     
 

@@ -1,5 +1,5 @@
-Wed Dec 11 09:39:14 BRT 2019 : Apache Derby Servidor de Rede - 10.13.1.1 - (Unversioned directory) iniciado e pronto para aceitar conexões na porta 1527 em {3}
-Wed Dec 11 09:39:17 BRT 2019 Thread[DRDAConnThread_2,5,main] Cleanup action starting
+Wed Dec 11 09:38:39 BRT 2019 : Apache Derby Servidor de Rede - 10.13.1.1 - (Unversioned directory) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Wed Dec 11 09:38:39 BRT 2019 Thread[DRDAConnThread_2,5,main] Cleanup action starting
 java.sql.SQLException: Banco de dados 'tcc' não encontrado.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
@@ -53,7 +53,7 @@ ERROR XJ004: Banco de dados 'tcc' não encontrado.
 	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
 ============= end nested exception, level (1) ===========
 Cleanup action completed
-Wed Dec 11 09:39:17 BRT 2019 Thread[DRDAConnThread_2,5,main] (DATABASE = tcc), (DRDAID = {1}), Banco de dados 'tcc' não encontrado.
+Wed Dec 11 09:38:39 BRT 2019 Thread[DRDAConnThread_2,5,main] (DATABASE = tcc), (DRDAID = {1}), Banco de dados 'tcc' não encontrado.
 ----------------------------------------------------------------
-Wed Dec 11 09:42:40 BRT 2019: Shutting down Derby engine
+Wed Dec 11 09:38:56 BRT 2019: Shutting down Derby engine
 ----------------------------------------------------------------

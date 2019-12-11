@@ -56,6 +56,16 @@ public TemasSugeridosDAO(){
                     tema = new TemasSugeridos();
                     tema.setCodTema(rs.getInt("id"));
                     tema.setNomeTema(rs.getString("tema"));
+            
+                    ProfessorDAO dao = new ProfessorDAO();
+                    Professor pegaProfessor = (Professor) dao.read(rs.getInt("id_professor"));
+                    tema.setProfessor(pegaProfessor);
+  
+                    ProjetosPesquisaDAO dao2 = new ProjetosPesquisaDAO();
+                    ProjetosPesquisa pegaProjeto = (ProjetosPesquisa) dao2.read(rs.getInt("id_projeto"));
+                    tema.setProjetospesquisa(pegaProjeto);
+                    tema.setReservado(rs.getBoolean("reservado"));
+                    
             }
  
             rs.close();
@@ -71,12 +81,21 @@ public TemasSugeridosDAO(){
     @Override
     public void update(Object obj) {
         TemasSugeridos tema = (TemasSugeridos) obj;
-        String sql = "UPDATE tema SET tema=? WHERE id=?";
+        String sql = "UPDATE tema SET tema=?, reservado=? WHERE id=?";
         try { 
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, tema.getNomeTema());
-            stmt.setInt(2, tema.getCodTema());
 
+            
+            System.out.println(tema.isReservado());
+            if (!tema.isReservado()) {
+                stmt.setString(2, "0");
+            } else {
+                stmt.setString(2, "1");
+            }
+           stmt.setInt(3, tema.getCodTema());
+            
+            
             int rowsUpdated = stmt.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("Tema atualizado com sucesso!");
@@ -119,14 +138,15 @@ public TemasSugeridosDAO(){
                      tema.setCodTema(rs.getInt("id"));
                      tema.setNomeTema(rs.getString("tema"));
 
-                     //tema.setProfessor(rs.getInt("id_professor"));
-                     //tema.setProjetospesquisa(rs.getInt("id_projeto"));
+                    ProfessorDAO dao = new ProfessorDAO();
+                    Professor pegaProfessor = (Professor) dao.read(rs.getInt("id_professor"));
+                    tema.setProfessor(pegaProfessor);
+  
+                    ProjetosPesquisaDAO dao2 = new ProjetosPesquisaDAO();
+                    ProjetosPesquisa pegaProjeto = (ProjetosPesquisa) dao2.read(rs.getInt("id_projeto"));
+                    tema.setProjetospesquisa(pegaProjeto);
 
-                     if (rs.getString("reservado").charAt(0) != 0) {
-                         tema.setReservado(true);
-                     } else {
-                         tema.setReservado(false);                         
-                     }
+                    tema.setReservado(rs.getBoolean("reservado"));
                      // adicionando o objeto à lista
                      listaTemas.add(tema);
                  }
