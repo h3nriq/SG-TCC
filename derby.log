@@ -1,21 +1,11 @@
 ----------------------------------------------------------------
-<<<<<<< HEAD
-Wed Dec 11 22:59:11 BRT 2019:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instância a816c00e-016e-f7d4-d4c2-0000032aefe0
-no diretório de banco de dados C:\Dev\SG-TCC3\tcc 
-
-java.vendor=Oracle Corporation
-java.runtime.version=13.0.1+9
-user.dir=C:\Dev\SG-TCC3
-=======
-Wed Dec 11 16:02:46 BRST 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instance a816c00e-016e-f620-ab4c-00000e508e88 
+Thu Dec 12 11:17:28 BRST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instance a816c00e-016e-fa41-d364-00000e505708 
 on database directory C:\Projetos\SG-TCC\tcc with class loader sun.misc.Launcher$AppClassLoader@6d06d69c 
 Loaded from file:/C:/Projetos/SG-TCC/dist/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_221-b11
 user.dir=C:\Projetos\SG-TCC
->>>>>>> feature-professor
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
