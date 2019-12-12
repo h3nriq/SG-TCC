@@ -19,7 +19,7 @@ public TemasSugeridosDAO(){
 
     @Override
     public void create(Object obj) {
-        String sql = "INSERT INTO tema (tema, id_professor, id_projeto, reservado) VALUES(?,?,?,0)";
+        String sql = "INSERT INTO tema (tema, id_professor, id_projeto, reservado) VALUES(?,?,?,'0')";
         TemasSugeridos tema = (TemasSugeridos) obj;
 
         Professor pegaProfessor = tema.getProfessor();
@@ -33,7 +33,6 @@ public TemasSugeridosDAO(){
             stmt.setString(1, tema.getNomeTema());
             stmt.setInt(2, pegaIdProfessor);
             stmt.setInt(3, pegaIdProjeto);
-            stmt.setInt(4, 0);
             stmt.execute();
             stmt.close();
         } 
@@ -64,6 +63,7 @@ public TemasSugeridosDAO(){
                     ProjetosPesquisaDAO dao2 = new ProjetosPesquisaDAO();
                     ProjetosPesquisa pegaProjeto = (ProjetosPesquisa) dao2.read(rs.getInt("id_projeto"));
                     tema.setProjetospesquisa(pegaProjeto);
+
                     tema.setReservado(rs.getBoolean("reservado"));
                     
             }
@@ -93,7 +93,8 @@ public TemasSugeridosDAO(){
             } else {
                 stmt.setString(2, "1");
             }
-           stmt.setInt(3, tema.getCodTema());
+            
+            stmt.setInt(3, tema.getCodTema());
             
             
             int rowsUpdated = stmt.executeUpdate();

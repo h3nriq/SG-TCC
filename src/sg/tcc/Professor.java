@@ -13,6 +13,6 @@ public class Professor extends Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Professor{" + "id=" + getId() + ", nome=" + getNome() + ", email=" + getEmail() +'}';
+        return "Id: " + getId() + ". Nome: " + getNome() + ". E-mail=" + getEmail();
     }
 }

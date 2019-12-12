@@ -23,7 +23,7 @@ public AlunoDAO(){
 
     @Override
     public void create(Object obj) {
-        String sql = "INSERT INTO usuario (tipo, nome, identificador, email, telefone) VALUES('A',?,?,?,?)";
+        String sql = "INSERT INTO usuario (tipo, nome, identificador, email, telefone) VALUES('A',?,?,?,?) order by id";
         Aluno aluno = (Aluno) obj;
         try { 
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -42,10 +42,10 @@ public AlunoDAO(){
     @Override
     public Object read(int id) { 
         Aluno aluno = null;
-        String sql = "SELECT * FROM usuario WHERE id=? ORDER BY id ASC";
+        String sql = "SELECT * FROM usuario WHERE id=? ORDER BY nome";
             try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, id); // Set 1st WHERE to int
+            stmt.setInt(1, id);
  
             ResultSet rs = stmt.executeQuery();
  
