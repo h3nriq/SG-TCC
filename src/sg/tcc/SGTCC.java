@@ -1,6 +1,7 @@
 package sg.tcc;
 import dao.AlunoDAO;
 import dao.AreasDAO;
+import dao.DefineTemaOrientadorDAO;
 import dao.Professor_AreasDAO;
 import dao.ProfessorDAO;
 import dao.ProjetosPesquisaDAO;
@@ -47,6 +48,7 @@ public class SGTCC {
           System.out.println("Id: " + professor.getId() + ". Nome: " + professor.getNome() + ". E-mail: " + professor.getEmail());
         }
 
+        
         // TESTES DE UPDATE, SELECT DE UM USER E DELETE
         Professor teste2 = (Professor) dao2.read(1);
         //teste2.setNome("Alex Dias Gonsales");
@@ -118,6 +120,12 @@ public class SGTCC {
         //System.out.println(teste6);        
         //dao6.update(teste6);      
         
+        //DefineTemaOrientadorDAO dao7 = new DefineTemaOrientadorDAO();
+        //System.out.println("\nLISTA PROPOSTAS");
+        //List<DefineTemaOrientador> listaPropostas = dao7.readLista();
+        //for (DefineTemaOrientador proposta : listaPropostas) {
+        //    System.out.println(proposta);
+        //}
         
 
         

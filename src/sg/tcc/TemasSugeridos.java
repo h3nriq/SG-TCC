@@ -62,6 +62,4 @@ public class TemasSugeridos {
         return "TemasSugeridos{" + "codTema=" + codTema + ", nomeTema=" + nomeTema + ", reservado=" + reservado + ", professor=" + professor.getId() + ", projetospesquisa=" + projetospesquisa.getId() + '}';
     }
     
-
-
 }
