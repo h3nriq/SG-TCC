@@ -34,7 +34,7 @@ public class Aluno extends Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Aluno{" + "id=" + getId() + ", nome=" + getNome() + ", email=" + getEmail() + ", nrMatricula=" + nrMatricula + ", telefone=" + telefone + '}';
+        return "Id: " + getId() + ". Nome: " + getNome() + ". Nº Matricula: " + nrMatricula + ". E-mail: " + getEmail() + ". Telefone: " + telefone;
     }
 
 }

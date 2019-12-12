@@ -1,8 +1,15 @@
 ----------------------------------------------------------------
+<<<<<<< HEAD
 Thu Dec 12 11:17:28 BRST 2019:
 Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instance a816c00e-016e-fa41-d364-00000e505708 
 on database directory C:\Projetos\SG-TCC\tcc with class loader sun.misc.Launcher$AppClassLoader@6d06d69c 
 Loaded from file:/C:/Projetos/SG-TCC/dist/lib/derby.jar
+=======
+Thu Dec 12 10:23:26 BRT 2019:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instância a816c00e-016e-fa47-4b4a-0000032aea78
+no diretório de banco de dados C:\Dev\SG-TCC3\tcc 
+
+>>>>>>> 55522e9d1dc329db726f80cd243a91983835c68c
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_221-b11
 user.dir=C:\Projetos\SG-TCC
