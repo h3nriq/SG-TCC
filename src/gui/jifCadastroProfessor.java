@@ -5,6 +5,10 @@
  */
 package gui;
 
+import dao.ProfessorDAO;
+import sg.tcc.Professor;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author diogo.almeida
@@ -16,8 +20,25 @@ public class jifCadastroProfessor extends javax.swing.JInternalFrame {
      */
     public jifCadastroProfessor() {
         initComponents();
+        
+        ListaTabela();
     }
 
+    public void ListaTabela(){
+        DefaultTableModel modelo = (DefaultTableModel) jtProfessores.getModel();
+        
+        modelo.setNumRows(0);
+        
+        ProfessorDAO professoresDao = new ProfessorDAO();
+        
+        for(Professor p: professoresDao.readLista()){
+            modelo.addRow(new Object[]{
+                p.getNome(),
+                p.getEmail()
+            });
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,7 +56,7 @@ public class jifCadastroProfessor extends javax.swing.JInternalFrame {
         jbtnCadastrar = new javax.swing.JButton();
         jbtnLimpar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtProfessores = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -59,7 +80,7 @@ public class jifCadastroProfessor extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtProfessores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -70,7 +91,7 @@ public class jifCadastroProfessor extends javax.swing.JInternalFrame {
                 "Nome", "E-mail"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtProfessores);
 
         jButton2.setText("Alterar Professor");
 
@@ -115,7 +136,7 @@ public class jifCadastroProfessor extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 1, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -141,7 +162,7 @@ public class jifCadastroProfessor extends javax.swing.JInternalFrame {
                     .addComponent(jButton4)
                     .addComponent(jButton3)
                     .addComponent(jButton5))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -165,9 +186,9 @@ public class jifCadastroProfessor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton jbtnCadastrar;
     private javax.swing.JButton jbtnLimpar;
     private javax.swing.JTextField jtNomeProfessor;
+    private javax.swing.JTable jtProfessores;
     // End of variables declaration//GEN-END:variables
 }

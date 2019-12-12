@@ -77,7 +77,7 @@ public ProfessorDAO(){
 
             int rowsUpdated = stmt.executeUpdate();
             if (rowsUpdated > 0) {
-                System.out.println("Objeto Professor atualizado com sucesso!");
+                System.out.println("Professor atualizado com sucesso!");
             }
                 stmt.execute();
                 stmt.close();
