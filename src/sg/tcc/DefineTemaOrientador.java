@@ -7,10 +7,12 @@ public class DefineTemaOrientador {
         Professor orientador;
         TemasSugeridos tema;
 
-    public DefineTemaOrientador(int id, String descricao, double notaFinal, Aluno aluno, Professor orientador, TemasSugeridos tema) {
-        this.id = id;
+    public DefineTemaOrientador(String descricao, Aluno aluno, Professor orientador, TemasSugeridos tema) {
+        //int id,
+        //this.id = id;
+        //double notaFinal,
         this.descricao = descricao;
-        this.notaFinal = notaFinal;
+        //this.notaFinal = notaFinal;
         this.aluno = aluno;
         this.orientador = orientador;
         this.tema = tema;
@@ -68,7 +70,7 @@ public class DefineTemaOrientador {
 
     @Override
     public String toString() {
-        return "DefineTemaOrientador{" + "id=" + id + ", descricao=" + descricao + ", notaFinal=" + notaFinal + ", aluno=" + aluno.getNome() + ", orientador=" + orientador.getNome() + ", tema=" + tema.getNomeTema() + '}';
+        return "Id: " + id + ". Descrição: " + descricao + ". Aluno: " + aluno.getNome() + ". Orientador: " + orientador.getNome()  + ". Tema original: " + tema.getNomeTema();
     }
        
 }

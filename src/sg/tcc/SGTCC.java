@@ -21,33 +21,13 @@ public class SGTCC {
           System.out.println(aluno);
         }
 
-        // TESTES DE UPDATE, SELECT DE UM USER E DELETE
-        //Aluno teste = (Aluno)dao.read(111);
-        //System.out.println(teste);
-        //teste.setNome("Francielli Pinheiro Dias");
-        //System.out.println(teste);
-        //dao.update(teste);      
-        //dao.delete(112);    
-
-        
         System.out.println("\nLISTA PROFESSORES - CLASSE PROFESSOR / PROFESSORDAO");
         ProfessorDAO dao2 = new ProfessorDAO();
-
-
-
-
         List<Professor> listaProfessores = dao2.readLista();
         for (Professor professor : listaProfessores) {
           System.out.println(professor);
         }
 
-        
-        // TESTES DE UPDATE, SELECT DE UM USER E DELETE
-        Professor teste2 = (Professor) dao2.read(1);
-        //teste2.setNome("Evandro Manara Miletto");
-        //teste2.setEmail("evandro.miletto@poa.ifrs.edu.br");
-        //dao2.update(teste2);
-        //dao.delete(10);
         
         System.out.println("\nLISTA AREAS DE CONHECIMENTO - CLASSE AREAS / AREAS DAO");
         AreasDAO dao3 = new AreasDAO();
@@ -57,39 +37,36 @@ public class SGTCC {
         }
 
         // TESTES DE UPDATE, SELECT DE UM USER, DELETE E CREATE
-        Areas teste3 = (Areas)dao3.read(104);
-        // System.out.println(teste3);
-        // teste3.setNomeArea("Redes de Computadores");
-        // System.out.println(teste3);
-        // dao3.update(teste3);      
-        // dao3.delete(4);     
+    //    Areas area = new Areas();
+  //      area.setNomeArea("Redes de Computadores");
+//        dao3.create(area);     
 
-        //Areas insert = new Areas();
-        //insert.setNomeArea("Red de Computadores");
-        //System.out.println(insert);       
-        //dao3.create(insert);
-        
         
         Professor_AreasDAO dao4 = new Professor_AreasDAO();
         //Professor_Areas professor_areas;
-        //professor_areas = new Professor_Areas(teste3, teste2);
-        //System.out.println(professor_areas);
+        //professor_areas = new Professor_Areas(teste2, teste3);
         //dao4.create(professor_areas);
         System.out.println("\nLISTA AREAS DE INTERESSE DO PROFESSOR DE ID 1 (KAREN) - CLASSES PROFESSOR_AREAS E PROFESSOR_AREASDAO");
         List<Professor_Areas> listaProfessor_Areas = dao4.readLista('p', 1);
         for (Professor_Areas profarea : listaProfessor_Areas) {
             System.out.println(profarea);
         }
-        //dao4.delete(1, 104);
 
+        System.out.println("\nLISTA PROFESSORES QUE TENHAM ÁREA DE INTERESSE DE ID 105 (IHC) - CLASSES PROFESSOR_AREAS E PROFESSOR_AREASDAO");
+        List<Professor_Areas> listaProfessor_Areas2 = dao4.readLista('a', 105);
+        for (Professor_Areas profarea : listaProfessor_Areas2) {
+            System.out.println(profarea);
+        }
+
+        
         ProjetosPesquisaDAO dao5 = new ProjetosPesquisaDAO();
         System.out.println("\nLISTA PROJETOS DE PESQUISA - CLASSES PROJETOSPESQUISA E PROJETOSPESQUISADAO");
         List<ProjetosPesquisa> listaProjetosPesquisa = dao5.readLista();
         for (ProjetosPesquisa projeto : listaProjetosPesquisa) {
             System.out.println(projeto);
         }
-        ProjetosPesquisa teste5 = (ProjetosPesquisa) dao5.read(101);
-        System.out.println(teste5);
+        //ProjetosPesquisa teste5 = (ProjetosPesquisa) dao5.read(101);
+        //System.out.println(teste5);
         //teste5.setNomeProjeto("LECC - Laboratório de Estudos Cognitivos Apoiados por Computação");
         //teste5.setDescricao("Objetiva fazer uso da computação tanto como ferramenta para estimular os processos cognitivos, como ferramenta de produção de conhecimento e novos recursos educacionais.");
         //System.out.println(teste5);
@@ -105,21 +82,43 @@ public class SGTCC {
   
         
 
-        //TemasSugeridos teste6 = (TemasSugeridos)dao6.read(101);
+        TemasSugeridos teste6 = (TemasSugeridos)dao6.read(101);
         //teste6.setProjetospesquisa(teste5);
         // System.out.println(teste3);
         // dao3.delete(4);     
         //System.out.println(teste6);        
         //dao6.update(teste6);      
-        
-        //DefineTemaOrientadorDAO dao7 = new DefineTemaOrientadorDAO();
-        //System.out.println("\nLISTA PROPOSTAS");
-        //List<DefineTemaOrientador> listaPropostas = dao7.readLista();
-        //for (DefineTemaOrientador proposta : listaPropostas) {
-        //    System.out.println(proposta);
-        //}
-        
 
+        DefineTemaOrientadorDAO dao7 = new DefineTemaOrientadorDAO();
+        //dao7.create(novo);
+        //dao7.delete(301);
+        System.out.println("\nLISTA PROPOSTAS - CLASSE DEFINETEMAORIENTADOR / DEFINETEMAORIENTADORDAO");
+        List<DefineTemaOrientador> listaPropostas = dao7.readLista();
+        for (DefineTemaOrientador proposta : listaPropostas) {
+            System.out.println(proposta);
+        }
+        
+        System.out.println("\nPROPOSTA DE BANCA");
+        DefineTemaOrientador teste7 = (DefineTemaOrientador) dao7.read(201);
+        System.out.println("Nome do trabalho: " + teste7.getDescricao());
+        
+        Professor pegaprof = teste7.getOrientador();
+        System.out.println("Orientador: " + pegaprof.getNome() + "\n");
+        int i = pegaprof.getId();
+        
+        ProfessorDAO daofinal = new ProfessorDAO();
+        System.out.println("Disponíveis para a banca");
+        List<Professor> listaBanca = daofinal.readBanca(i);
+        for (Professor professor : listaBanca) {
+          System.out.println(professor.getNome());
+        }
+        
         
     }  
-} 
+
+ 
+
+}
+
+
+    

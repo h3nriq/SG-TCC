@@ -39,7 +39,7 @@ public class ProjetosPesquisa {
 
     @Override
     public String toString() {
-        return "Id=" + id + ". Nome do Projeto: " + nomeProjeto + ". Descrição: " + descricao;
+        return "Id: " + id + ". Nome do Projeto: " + nomeProjeto + ". Descrição: " + descricao;
     }
 
 

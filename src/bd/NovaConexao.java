@@ -19,19 +19,13 @@ public class NovaConexao {
         Connection conn = null;
         
         
-        // CRIA CONEXAO
-//        try {
-//           conn = DriverManager.getConnection("jdbc:derby://localhost:1527/tcc", "tcc", "tcc");
-//        } catch (SQLException excecao) {
-//           System.out.println("Erro ao conectar: " + excecao );
-        
            
            //CONEXAO EM TEMPO DE EXECUçÃO
         try{
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             conn = DriverManager.getConnection("jdbc:derby:tcc", "tcc", "tcc");
             
-            System.out.println("Conectado!");
+            //System.out.println("Conectado!");
             
         }catch(ClassNotFoundException e){
             System.out.println("Não encontrado o driver: " + e.getMessage());

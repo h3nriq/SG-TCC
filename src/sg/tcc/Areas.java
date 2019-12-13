@@ -31,7 +31,7 @@ public class Areas implements Serializable {
 
     @Override
     public String toString() {
-        return "Areas{" + "codArea=" + codArea + ", nomeArea=" + nomeArea + '}';
+        return "Código da Área=" + codArea + ". Nome da Área=" + nomeArea;
     }
 
 

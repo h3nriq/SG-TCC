@@ -30,7 +30,7 @@ public DefineTemaOrientadorDAO(){
 
     @Override
     public void create(Object obj)  {
-        String sql = "INSERT INTO proposta (descricao, id_aluno, id_professor, id_tema) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO proposta (descricao, id_aluno, id_orientador, id_tema) VALUES(?,?,?,?)";
         DefineTemaOrientador proposta = (DefineTemaOrientador) obj;
 
         Aluno pegaAluno = proposta.getAluno();
@@ -45,6 +45,12 @@ public DefineTemaOrientadorDAO(){
             stmt.setInt(2, pegaIdAluno);
             stmt.setInt(3, pegaIdProfessor);
             stmt.setInt(4, pegaIdTema);
+
+            //ROTINA QUE RESERVA O TEMA QUE JÁ FOI ESCOLHIDO POR UM ALUNO
+            TemasSugeridosDAO dao = new TemasSugeridosDAO();
+            pegaTema.setReservado(true);
+            dao.update(pegaTema);
+
             stmt.execute();
             stmt.close();
         } 
@@ -70,12 +76,16 @@ public DefineTemaOrientadorDAO(){
                     proposta.setDescricao(rs.getString("descricao"));
                     proposta.setNotaFinal(rs.getDouble("nota_final"));
 
-                    AlunoDAO dao2 = new AlunoDAO();
-                    Aluno pegaAluno = (Aluno) dao2.read(rs.getInt("id_aluno"));
+                    AlunoDAO dao = new AlunoDAO();
+                    Aluno pegaAluno = (Aluno) dao.read(rs.getInt("id_aluno"));
                     proposta.setAluno(pegaAluno);
-                    ProfessorDAO dao = new ProfessorDAO();
-                    Professor pegaOrientador = (Professor) dao.read(rs.getInt("id_orientador"));
+                    ProfessorDAO dao2 = new ProfessorDAO();
+                    Professor pegaOrientador = (Professor) dao2.read(rs.getInt("id_orientador"));
                     proposta.setOrientador(pegaOrientador);
+                    TemasSugeridosDAO dao3 = new TemasSugeridosDAO();
+                    TemasSugeridos pegaTema = (TemasSugeridos) dao3.read(rs.getInt("id_tema"));
+                    proposta.setTema(pegaTema);
+                    
             }
  
             rs.close();
@@ -138,6 +148,18 @@ public DefineTemaOrientadorDAO(){
                      DefineTemaOrientador proposta = new DefineTemaOrientador();
                      proposta.setId(rs.getInt("id"));
                      proposta.setDescricao(rs.getString("descricao"));
+                     proposta.setNotaFinal(rs.getDouble("nota_final"));
+
+                     AlunoDAO dao = new AlunoDAO();
+                     Aluno pegaAluno = (Aluno) dao.read(rs.getInt("id_aluno"));
+                     proposta.setAluno(pegaAluno);
+                     ProfessorDAO dao2 = new ProfessorDAO();
+                     Professor pegaOrientador = (Professor) dao2.read(rs.getInt("id_orientador"));
+                     proposta.setOrientador(pegaOrientador);
+                     TemasSugeridosDAO dao3 = new TemasSugeridosDAO();
+                     TemasSugeridos pegaTema = (TemasSugeridos) dao3.read(rs.getInt("id_tema"));
+                     proposta.setTema(pegaTema);
+
                      // adicionando o objeto à lista
                      listaPropostas.add(proposta);
                  }

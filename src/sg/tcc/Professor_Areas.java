@@ -4,9 +4,9 @@ public class Professor_Areas {
     Areas area;
     Professor professor;
 
-    public Professor_Areas(Areas area, Professor professor) {
-        this.area = area;
+    public Professor_Areas(Professor professor, Areas area) {
         this.professor = professor;
+        this.area = area;
     }
 
     public Professor_Areas() { }

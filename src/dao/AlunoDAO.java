@@ -23,7 +23,7 @@ public AlunoDAO(){
 
     @Override
     public void create(Object obj) {
-        String sql = "INSERT INTO usuario (tipo, nome, identificador, email, telefone) VALUES('A',?,?,?,?) order by id";
+        String sql = "INSERT INTO usuario (tipo, nome, identificador, email, telefone) VALUES('A',?,?,?,?)";
         Aluno aluno = (Aluno) obj;
         try { 
             PreparedStatement stmt = connection.prepareStatement(sql);

@@ -128,4 +128,29 @@ public ProfessorDAO(){
              }
          }
 
+    public List<Professor> readBanca(int i) {
+             try {
+                 List<Professor> listaBanca = new ArrayList<>();
+
+                 PreparedStatement stmt = this.connection.prepareStatement("SELECT * FROM usuario WHERE ID != ? AND tipo = 'P' ORDER BY id ASC");
+                 stmt.setInt(1, i);
+                 ResultSet rs = stmt.executeQuery();                 
+                 
+                 while (rs.next()) {
+                     // cria os objetos para receber os dados do BD
+                     Professor professor = new Professor();
+                     professor.setId(rs.getInt("id"));
+                     professor.setNome(rs.getString("nome"));
+                     professor.setEmail(rs.getString("email"));
+                     // adicionando o objeto à lista
+                     listaBanca.add(professor);
+                 }
+                 rs.close();
+                 stmt.close();
+                 return listaBanca;
+             } catch (SQLException e) {
+                 throw new RuntimeException(e);
+             }
+         }
+
 }

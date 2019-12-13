@@ -32,18 +32,14 @@ public class InicioGUI extends javax.swing.JFrame {
         jdpPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SG-TCC - Sistema de Grenciamento de Trabalho de Concluão de Cursos");
+        setTitle("SG-TCC - Sistema de Gerenciamento de Trabalhos de Conclusão de Curso");
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -73,14 +69,6 @@ public class InicioGUI extends javax.swing.JFrame {
 
         jMenu1.setText("Cadastros");
 
-        jMenuItem1.setText("Aluno");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
         jMenuItem2.setText("Area");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,27 +76,6 @@ public class InicioGUI extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem2);
-
-        jMenuItem5.setText("Professor");
-        jMenuItem5.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                jMenuItem5ComponentAdded(evt);
-            }
-        });
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem5);
-
-        jMenuItem4.setText("Projeto");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem4);
 
         jMenuBar1.add(jMenu1);
 
@@ -130,46 +97,11 @@ public class InicioGUI extends javax.swing.JFrame {
         jMenu4.setText("Montar Banca");
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setText("Sobre");
-        jMenuBar1.add(jMenu5);
-
         setJMenuBar(jMenuBar1);
 
         setSize(new java.awt.Dimension(1010, 650));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        //new CreateAlunoGUI().setVisible(true);
-        
-        jifCadastroAluno obj  = new jifCadastroAluno();
-        jdpPrincipal.add(obj);
-        obj.setVisible(true);
-                
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-        //new CriaProfessor().setVisible(true);   
-        
-        jifCadastroProfessor obj  = new jifCadastroProfessor();
-        jdpPrincipal.add(obj);
-        obj.setVisible(true);
-                
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMenuItem5ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jMenuItem5ComponentAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem5ComponentAdded
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-        jifCadastroProjeto obj  = new jifCadastroProjeto();
-        jdpPrincipal.add(obj);
-        obj.setVisible(true);
-
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
@@ -223,13 +155,9 @@ public class InicioGUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JDesktopPane jdpPrincipal;
     // End of variables declaration//GEN-END:variables
